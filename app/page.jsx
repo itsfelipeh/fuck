@@ -8,7 +8,7 @@ export default function Home() {
   const GITHUB_USER = "itsfelipeh"; // <-- tu usuario de GitHub
   const REPO_NAME = "fuck"; // <-- nombre exacto del repo
   const TOTAL_IMAGES = 1; // <-- cantidad total de imágenes en /images/
-  const EXTENSIONS = ["jpg", "png", "gif"]; // <-- extensiones posibles
+  const EXTENSIONS = [""png"]; // <-- extensiones posibles
 
   
   // Función para generar imagen random
