@@ -14,7 +14,7 @@ export default function Home() {
     const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
 
     // URL del archivo "raw" en GitHub (pública)
-    const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.jpg`;
+    const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.png`;
 
     setImageUrl(url);
   }, []);
