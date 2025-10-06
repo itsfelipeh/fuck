@@ -5,19 +5,30 @@ export default function Home() {
   const [imageUrl, setImageUrl] = useState("");
 
   // 🔧 CONFIGURA ESTOS DATOS
-  const GITHUB_USER = "tu-usuario"; // <-- tu usuario de GitHub
-  const REPO_NAME = "random-images"; // <-- nombre exacto del repo
+  const GITHUB_USER = "itsfelipeh"; // <-- tu usuario de GitHub
+  const REPO_NAME = "fuck"; // <-- nombre exacto del repo
   const TOTAL_IMAGES = 10; // <-- cantidad total de imágenes en /images/
+  const EXTENSIONS = ["jpg", "png", "gif"]; // <-- extensiones posibles
 
   useEffect(() => {
-    // Genera un número random entre 1 y TOTAL_IMAGES
-    const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
+    function getRandomImage() {
+      const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
+      const randomExt = EXTENSIONS[Math.floor(Math.random() * EXTENSIONS.length)];
+      return `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.${randomExt}`;
+    }
 
-    // URL del archivo "raw" en GitHub (pública)
-    const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.jpg`;
-
-    setImageUrl(url);
+    setImageUrl(getRandomImage());
   }, []);
+
+  const handleClick = () => {
+    function getRandomImage() {
+      const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
+      const randomExt = EXTENSIONS[Math.floor(Math.random() * EXTENSIONS.length)];
+      return `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.${randomExt}`;
+    }
+
+    setImageUrl(getRandomImage());
+  };
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white text-center p-4">
@@ -37,7 +48,7 @@ export default function Home() {
 
       <button
         className="mt-6 bg-white text-black px-5 py-2 rounded-xl hover:bg-gray-300 transition text-sm sm:text-base md:text-lg"
-        onClick={() => window.location.reload()}
+        onClick={handleClick}
       >
         Ver otra 🔄
       </button>
