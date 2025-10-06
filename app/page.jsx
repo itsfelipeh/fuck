@@ -10,25 +10,18 @@ export default function Home() {
   const TOTAL_IMAGES = 1; // <-- cantidad total de imágenes en /images/
   const EXTENSIONS = ["jpg", "png", "gif"]; // <-- extensiones posibles
 
-  useEffect(() => {
-    function getRandomImage() {
-      const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
-      const randomExt = EXTENSIONS[Math.floor(Math.random() * EXTENSIONS.length)];
-      return `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.${randomExt}`;
-    }
+  
+  // Función para generar imagen random
+  const getRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
+    const randomExt = EXTENSIONS[Math.floor(Math.random() * EXTENSIONS.length)];
+    return `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.${randomExt}`;
+  };
 
+  // Carga inicial
+  useEffect(() => {
     setImageUrl(getRandomImage());
   }, []);
-
-  const handleClick = () => {
-    function getRandomImage() {
-      const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
-      const randomExt = EXTENSIONS[Math.floor(Math.random() * EXTENSIONS.length)];
-      return `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.${randomExt}`;
-    }
-
-    setImageUrl(getRandomImage());
-  };
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white text-center p-4">
@@ -48,7 +41,7 @@ export default function Home() {
 
       <button
         className="mt-6 bg-white text-black px-5 py-2 rounded-xl hover:bg-gray-300 transition text-sm sm:text-base md:text-lg"
-        onClick={handleClick}
+        onClick={() => setImageUrl(getRandomImage())}
       >
         Ver otra 🔄
       </button>
