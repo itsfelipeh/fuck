@@ -1,64 +1,46 @@
-// app/page.jsx
 "use client";
-
 import { useEffect, useState } from "react";
 
-export default function Home({ images }) {
+export default function Home() {
   const [imageUrl, setImageUrl] = useState("");
 
-  useEffect(() => {
-    if (images.length > 0) {
-      // Elegir imagen random
-      const randomIndex = Math.floor(Math.random() * images.length);
-      setImageUrl(images[randomIndex]);
-    }
-  }, [images]);
+  // 🔧 CONFIGURA ESTOS DATOS
+  const GITHUB_USER = "tu-usuario"; // <-- tu usuario de GitHub
+  const REPO_NAME = "random-images"; // <-- nombre exacto del repo
+  const TOTAL_IMAGES = 10; // <-- cantidad total de imágenes en /images/
 
-  const handleClick = () => {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    setImageUrl(images[randomIndex]);
-  };
+  useEffect(() => {
+    // Genera un número random entre 1 y TOTAL_IMAGES
+    const randomIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
+
+    // URL del archivo "raw" en GitHub (pública)
+    const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/images/fuck${randomIndex}.jpg`;
+
+    setImageUrl(url);
+  }, []);
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white text-center p-4">
-      <h1 className="text-3xl font-bold mb-6">Imagen Random 🔀</h1>
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+        Imagen Random 🔀
+      </h1>
 
       {imageUrl ? (
         <img
           src={imageUrl}
           alt="Imagen random"
-          className="rounded-2xl shadow-lg max-w-full max-h-[80vh] object-contain transition-all"
+          className="rounded-2xl shadow-lg max-w-full sm:max-w-[80%] md:max-w-[70%] max-h-[80vh] object-contain transition-all"
         />
       ) : (
-        <p>Cargando imagen...</p>
+        <p className="text-lg sm:text-xl md:text-2xl">Cargando imagen...</p>
       )}
 
       <button
-        className="mt-6 bg-white text-black px-5 py-2 rounded-xl hover:bg-gray-300 transition"
-        onClick={handleClick}
+        className="mt-6 bg-white text-black px-5 py-2 rounded-xl hover:bg-gray-300 transition text-sm sm:text-base md:text-lg"
+        onClick={() => window.location.reload()}
       >
         Ver otra 🔄
       </button>
     </main>
   );
-}
-
-// Esto se ejecuta en el servidor para generar la lista de imágenes
-import fs from "fs";
-import path from "path";
-
-export async function getStaticProps() {
-  const imagesDir = path.join(process.cwd(), "public/images");
-  const files = fs.readdirSync(imagesDir);
-
-  // Solo tomar archivos .jpg
-  const images = files
-    .filter((file) => file.endsWith(".jpg"))
-    .map((file) => `/images/${file}`);
-
-  return {
-    props: {
-      images,
-    },
-  };
 }
