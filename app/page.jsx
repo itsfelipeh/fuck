@@ -7,7 +7,7 @@ export default function Home() {
   // 🔧 CONFIGURA ESTOS DATOS
   const GITHUB_USER = "itsfelipeh"; // <-- tu usuario de GitHub
   const REPO_NAME = "fuck"; // <-- nombre exacto del repo
-  const TOTAL_IMAGES = 10; // <-- cantidad total de imágenes en /images/
+  const TOTAL_IMAGES = 1; // <-- cantidad total de imágenes en /images/
   const EXTENSIONS = ["jpg", "png", "gif"]; // <-- extensiones posibles
 
   useEffect(() => {
