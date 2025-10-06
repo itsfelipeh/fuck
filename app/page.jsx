@@ -5,9 +5,9 @@ export default function Home() {
   const [imageUrl, setImageUrl] = useState("");
 
   // 🔧 CONFIGURA ESTOS DATOS
-  const GITHUB_USER = "tu-usuario"; // <-- tu usuario de GitHub
-  const REPO_NAME = "random-images"; // <-- nombre exacto del repo
-  const TOTAL_IMAGES = 10; // <-- cantidad total de imágenes en /images/
+  const GITHUB_USER = "itsfelipeh"; // <-- tu usuario de GitHub
+  const REPO_NAME = "fuck"; // <-- nombre exacto del repo
+  const TOTAL_IMAGES = 1; // <-- cantidad total de imágenes en /images/
 
   useEffect(() => {
     // Genera un número random entre 1 y TOTAL_IMAGES
